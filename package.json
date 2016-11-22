@@ -14,6 +14,7 @@
   "dependencies": {
     "bottleneck": "^1.15.0",
     "cradle": "^0.7.1",
+    "http": "0.0.0",
     "ibmiotf": "^0.2.25"
   }
 }

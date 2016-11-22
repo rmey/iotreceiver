@@ -3,6 +3,16 @@
 var client = require('ibmiotf');
 var cloudant = require('./myCloudant.js');
 
+// only for health check
+var http = require('http');
+var server = http.createServer(function (request, response) {
+  response.writeHead(200, {"Content-Type": "text/plain"});
+  response.end("Hello World\n");
+});
+// Listen on port 8000
+server.listen(8000);
+
+
 var config;
 if(process.env.IOTF){
     console.log('IOTF Env Var set:');
