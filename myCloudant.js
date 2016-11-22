@@ -11,7 +11,6 @@ function initConnection(url,cb){
   var re1 = /^https:\/\/(.*):(.*)@(.*)/;
   var result = re1.exec(url);
   if(result){
-      console.dir(result);
       cloudantUser = result[1];
       cloudantPassword = result[2];
       cloudantHost = result[3];
@@ -77,8 +76,9 @@ function createDoc(doc, cb){
 			else {
 			  cb(null,'doc saved');
 			}
-	}
-});
+	});
+}
+
 
 
 function getMutants(cb){

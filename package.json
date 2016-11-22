@@ -1,5 +1,5 @@
 {
-  "name": "iotfeeder",
+  "name": "iotreceiver",
   "version": "1.0.0",
   "description": "feeds iot messages into database",
   "main": "server.js",
