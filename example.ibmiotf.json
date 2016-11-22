@@ -1,0 +1,7 @@
+{
+      "org": "YOUR ORG",
+      "id": "YOUR APP NAME",
+      "auth-key": "YOUR APP KEY",
+      "auth-token": "YOUR TOKEN",
+      "type" : "shared"
+}
