@@ -44,8 +44,7 @@ To run the example in Bluemix / Cloud Foundry with multiple instances. The Cloud
 * Developer Resources on [IBM Watson IoT Platform](https://www.ibm.com/internet-of-things/roles/iot-developer)
 * [IBM Container service] on IBM Bluemix(https://www.ibm.com/cloud-computing/bluemix/containers)
 * [IBM Containers documentation](https://console.ng.bluemix.net/docs/containers/container_index.html)
-* Node.js SDK Cloud Foundry Buildpack in IBM Bluemix(https://console.ng.bluemix.net/docs/runtimes/nodejs/index.html#nodejs_runtime)
+* [Node.js SDK Cloud Foundry Buildpack in IBM Bluemix](https://console.ng.bluemix.net/docs/runtimes/nodejs/index.html#nodejs_runtime)
 * Bluemix-related questions on [Stackoverflow](http://stackoverflow.com/questions/tagged/bluemix)
 * Read [our Bluemix blog](https://developer.ibm.com/bluemix/blog/)
 
-[issues_url]: https://github.com/cloud-dach/iotreceiver/issues
