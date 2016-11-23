@@ -3,7 +3,8 @@
 * [Run with node.js](#run-with-node.js)
 * [Run as local Docker Container](#run-as-local-docker-container)
 * [Run as IBM Container scalable group](#run-as-ibm-container-scalable-group)
-* [Run as Cloud Foundry App] (#run-as-cloud-foundry-app)
+* [Run as Cloud Foundry App](#run-as-cloud-foundry-app)
+* [Links to more information](#links-to-more-information) 
 
 ## Overview
 The example shows how sensor data from the IBM Bluemix Watson IoT Platform can be stored in a Cloudant NoSQL DB. It connects as application client and waits for messages of a certain sensortype in my case some "BME280" sensors I connected at home via an own gateway with the IoT Platform. You can change the sensor type in server.js. This small service has the task to subscribe to the sensor events and save them in a database as JSON document for later processing (temperature, humidity, ...). The application run as multiple instances for HA, because the IoT Platform supports shared connect options for an application client. To not exceed the limit of my Cloudant instance for write rates I added a rate limiter for the database calls.
@@ -37,3 +38,14 @@ To run the example in Bluemix / Cloud Foundry with multiple instances. The Cloud
 `cf set-env iotreceiver IOTF "$IOTF"`<br />
 `cf set-env iotreceiver CLOUDANT_URL "$CLOUDANT_URL"`<br />
 `cf restage iotreceiver`<br />
+
+## Links to more information
+* Information on [IBM Watson IoT Platform](https://developer.ibm.com/recipes/author/iosuppor/)
+* Developer Resources on [IBM Watson IoT Platform](https://www.ibm.com/internet-of-things/roles/iot-developer)
+* [IBM Container service] on IBM Bluemix(https://www.ibm.com/cloud-computing/bluemix/containers)
+* [IBM Containers documentation](https://console.ng.bluemix.net/docs/containers/container_index.html)
+* Node.js SDK Cloud Foundry Buildpack in IBM Bluemix(https://console.ng.bluemix.net/docs/runtimes/nodejs/index.html#nodejs_runtime)
+* Bluemix-related questions on [Stackoverflow](http://stackoverflow.com/questions/tagged/bluemix)
+* Read [our Bluemix blog](https://developer.ibm.com/bluemix/blog/)
+
+[issues_url]: https://github.com/cloud-dach/iotreceiver/issues
