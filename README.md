@@ -12,11 +12,10 @@ The example shows how sensor data from the IBM Bluemix Watson IoT Platform can b
 To run the example locally you need to set Environment Variables or create 2 JSON files ".cloudant.json" and .ibmiotf.json formated like the example files provided.:<br />`export IOTF='{"org": "YOUR ORG","id": "YOUR APP NAME","auth-key": "YOUR APP KEY","auth-token": "YOUR TOKEN","type" : "shared"}'`<br />`export CLOUDANT_URL="https://.....-bluemix.cloudant.com"`<br /> `npm install` <br />`node server.js`
 
 ## Run as local Docker Container
-With a local Docker engine you need to start the Container with the environment variables described above:<br />`docker build -t "iotreceiver"`<br >`docker run -it -e IOTF="$IOTF" -e CLOUDANT_URL="$CLOUDANT_URL"`<br /> 
+With a local Docker engine you need to start the Container with the environment variables described above:<br />`docker build -t "iotreceiver"`<br >`docker run -it -e IOTF="$IOTF" -e CLOUDANT_URL="$CLOUDANT_URL"`
 
 ## Run as IBM Container scalable group
-With the following command the IBM Container Group on IBM Bluemix will be created with auto recovery and anti co-location/anti affinity settings enabled. Please note that the scalable group does not require to expose a public route, but it needs to expose a HTTP port for health checking to enable auto recovery<br /> `cf ic group create --name iotreceiver -m 64 -e CLOUDANT_URL="$CLOUDANT_URL" -P -e IOTF="$IOTF" --anti --auto registry.eu-gb.bluemix.net/yournamespace/iotreceiver`<br /> <br /> 
+With the following command the IBM Container Group on IBM Bluemix will be created with auto recovery and anti co-location/anti affinity settings enabled. Please note that the scalable group does not require to expose a public route, but it needs to expose a HTTP port for health checking to enable auto recovery<br /> `cf ic group create --name iotreceiver -m 64 -e CLOUDANT_URL="$CLOUDANT_URL" -P -e IOTF="$IOTF" --anti --auto registry.eu-gb.bluemix.net/yournamespace/iotreceiver`
 
 ## Run as Cloud Foundry App
-To run the example in Bluemix Cloud Foundry with multiple instances. The Cloudant Service could in that case also provide via the VCAP_SERVICE environment as bound service. </br> `cf push iotreceiver -m 64M -i 2 --no-start`<br />`cf set-env iotreceiver IOTF "$IOTF"`<br />`cf set-env iotreceiver CLOUDANT_URL "$CLOUDANT_URL"`<br />`cf restage iotreceiver`<br />
-
+To run the example in Bluemix / Cloud Foundry with multiple instances. The Cloudant Service could in that case also provide via the VCAP_SERVICE environment as bound service. </br> `cf push iotreceiver -m 64M -i 2 --no-start`<br />`cf set-env iotreceiver IOTF "$IOTF"`<br />`cf set-env iotreceiver CLOUDANT_URL "$CLOUDANT_URL"`<br />`cf restage iotreceiver`
