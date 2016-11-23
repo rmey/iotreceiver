@@ -22,7 +22,7 @@ To run the example locally you need to set Environment Variables or create 2 JSO
 ## Run as local Docker Container
 With a local Docker engine you need to start the Container with the environment variables described above:
 
-`docker build -t "iotreceiver"`
+`docker build -t "iotreceiver"`<br />
 `docker run -it -e IOTF="$IOTF" -e CLOUDANT_URL="$CLOUDANT_URL"`
 
 ## Run as IBM Container scalable group
