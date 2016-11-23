@@ -11,37 +11,29 @@ The example shows how sensor data from the IBM Bluemix Watson IoT Platform can b
 ## Run with node.js
 To run the example locally you need to set Environment Variables or create 2 JSON files ".cloudant.json" and .ibmiotf.json formated like the example files provided.:
 
-`export IOTF='{"org": "YOUR ORG","id": "YOUR APP NAME","auth-key": "YOUR APP KEY","auth-token": "YOUR TOKEN","type" : "shared"}'`
-
-`export CLOUDANT_URL="https://.....-bluemix.cloudant.com"`
-
-`npm install`
-
-`node server.js`
+`export IOTF='{"org": "YOUR ORG","id": "YOUR APP NAME","auth-key": "YOUR APP KEY","auth-token": "YOUR TOKEN","type" : "shared"}'`<br />
+`export CLOUDANT_URL="https://.....-bluemix.cloudant.com"`<br />
+`npm install`<br />
+`node server.js`<br />
 
 ## Run as local Docker Container
-With a local Docker engine you need to start the Container with the environment variables described above:<br />`docker build -t "iotreceiver"`
+With a local Docker engine you need to start the Container with the environment variables described above:
 
+`docker build -t "iotreceiver"`
 `docker run -it -e IOTF="$IOTF" -e CLOUDANT_URL="$CLOUDANT_URL"`
 
 ## Run as IBM Container scalable group
 With the following command the IBM Container Group on IBM Bluemix will be created with auto recovery and anti co-location/anti affinity settings enabled. Please note that the scalable group does not require to expose a public route, but it needs to expose a HTTP port for health checking to enable auto recovery.
 
-`cf ic init` 
-
-`docker tag iotreceiver registry.YOURREGION.bluemix.net/YOURNAMESPACE/iotreceiver`
-
-`docker push registry.YOURREGION.bluemix.net/YOURNAMESPACE/iotreceiver`
-
-`cf ic group create --name iotreceiver -m 64 -e CLOUDANT_URL="$CLOUDANT_URL" -P -e IOTF="$IOTF" --anti --auto registry.YOURREGION.bluemix.net/YOURNAMESPACE/iotreceiver`
+`cf ic init`<br /> 
+`docker tag iotreceiver registry.YOURREGION.bluemix.net/YOURNAMESPACE/iotreceiver`<br />
+`docker push registry.YOURREGION.bluemix.net/YOURNAMESPACE/iotreceiver`<br />
+`cf ic group create --name iotreceiver -m 64 -e CLOUDANT_URL="$CLOUDANT_URL" -P -e IOTF="$IOTF" --anti --auto registry.YOURREGION.bluemix.net/YOURNAMESPACE/iotreceiver`<br />
 
 ## Run as Cloud Foundry App
 To run the example in Bluemix / Cloud Foundry with multiple instances. The Cloudant Service could in that case also provide via the VCAP_SERVICE environment as bound service.
 
-`cf push iotreceiver -m 64M -i 2 --no-start`
-
-`cf set-env iotreceiver IOTF "$IOTF"`
-
-`cf set-env iotreceiver CLOUDANT_URL "$CLOUDANT_URL"`
-
-`cf restage iotreceiver`
+`cf push iotreceiver -m 64M -i 2 --no-start`<br />
+`cf set-env iotreceiver IOTF "$IOTF"`<br />
+`cf set-env iotreceiver CLOUDANT_URL "$CLOUDANT_URL"`<br />
+`cf restage iotreceiver`<br />
