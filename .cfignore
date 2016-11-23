@@ -1,0 +1,6 @@
+.ibmiotf.json
+.cloudant.json
+node_modules
+Dockerfile
+example.cloudant.json
+example.ibmiotf.json

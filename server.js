@@ -9,9 +9,10 @@ var server = http.createServer(function (request, response) {
   response.writeHead(200, {"Content-Type": "text/plain"});
   response.end("Hello World\n");
 });
-// Listen on port 8000
-server.listen(8000);
-
+// Listen on port 8000 or Cloud provided Port
+// this is only to enable frequent health checking in Containers or CF
+var port = (process.env.PORT || 8000);
+server.listen(port);
 
 var config;
 if(process.env.IOTF){
@@ -31,11 +32,11 @@ else {
   cloudantUrl = require('./.cloudant.json').url;
 }
 
-var Bottleneck = require("bottleneck"); // Skip when browser side
+var Bottleneck = require("bottleneck");
 // Never more than 1 request running at a time.
 // Wait at least 250ms between each request.
-// keep the free Cloudant plan happy max 10 request/second
-var limiter = new Bottleneck(1, 500);
+// keep the free Cloudant plan happy which has max 10 request/second
+var limiter = new Bottleneck(1, 250);
 
 var deviceType = "BME280";
 var appClient = new client.IotfApplication(config);
