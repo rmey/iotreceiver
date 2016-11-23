@@ -7,7 +7,7 @@
 * [Links to more information](#links-to-more-information) 
 
 ## Overview
-The example shows how sensor data from the IBM Bluemix Watson IoT Platform can be stored in a Cloudant NoSQL DB. It connects as application client and waits for messages of a certain sensortype in my case some "BME280" sensors I connected at home via an own gateway with the IoT Platform. You can change the sensor type in server.js. This small service has the task to subscribe to the sensor events and save them in a database as JSON document for later processing (temperature, humidity, ...). The application run as multiple instances for HA, because the IoT Platform supports shared connect options for an application client. To not exceed the limit of my Cloudant instance for write rates I added a rate limiter for the database calls.
+The example shows how sensor data from the IBM Bluemix Watson IoT Platform can be stored in a Cloudant NoSQL DB. It connects as application client and waits for messages of a certain sensortype in my case some "BME280" sensors I connected at home via an own gateway with the IoT Platform. You can change the sensor type in server.js. This small service has the task to subscribe to the sensor events and save them in a database as JSON document for later processing (temperature, humidity, ...). The application run as multiple instances for high availability, because the IoT Platform supports shared connect options for an application client. To not exceed the limit of my Cloudant instance for write rates I added a rate limiter for the database calls.
 
 ## Run with node.js
 To run the example locally you need to set Environment Variables or create 2 JSON files ".cloudant.json" and .ibmiotf.json formated like the example files provided.:
