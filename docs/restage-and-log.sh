@@ -5,16 +5,16 @@
 # cf api https://api.eu-gb.bluemix.net UK
 # cf api https://api.ng.bluemix.net US
 
-echo "--> Ensure to deploy into the right Project Region"
+echo "--> Ensure to deploy into the right bluemix region"
 cd ..
 cf api https://api.eu-gb.bluemix.net
 cf login
 
-echo "--> Starting push and log CF demo-visual-recognition-backend"
+echo "--> Starting push and log CF iotreceiver-tsuedbro"
 
 echo "****** show existing apps *********"
 cf apps
 echo "******* push to CF ********"
-cf restage  iotreceiver
+cf restage  iotreceiver-tsuedbro
 echo "******* start CF logging ********"
-cf logs  iotreceiver
+cf logs  iotreceiver-tsuedbro
