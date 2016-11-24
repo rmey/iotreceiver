@@ -11,7 +11,7 @@ module.exports = function (theDeviceType, theAppClientIoT, theCloudantUrl, theCl
   var cloudant     = theCloudant;
 
   function savePayload(payload,cb){
-    console.error('>>> Starting saving payload in Cloudant');
+    console.log('>>> Starting saving payload in Cloudant');
     cloudant.initConnection(cloudantUrl,function(err,res){
         if(err){
             console.error('>>> Error connecting to db' + err);

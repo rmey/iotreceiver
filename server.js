@@ -37,7 +37,7 @@ if(process.env.IOTF){
 if(getBluemixVCAP.getServiceCredentialsIoT().org){
   config = {
               "org": getBluemixVCAP.getServiceCredentialsIoT().org,
-              "id": "IOTRECEIVER_A_IOT_NODE_JS_APPLICATION",
+              "id": "IOT_NODE_JS_APPLICATION",
               "auth-key": getBluemixVCAP.getServiceCredentialsIoT().apiKey,
               "auth-token": getBluemixVCAP.getServiceCredentialsIoT().apiToken,
               "type" : "shared"
