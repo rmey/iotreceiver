@@ -7,22 +7,30 @@ var ClientIoT = require('ibmiotf');
 var Cloudant  = require('./own_modules/customCloudant.js');
 var cloudant  = new Cloudant('sensordata');
 var CustomIoT = require('./own_modules/customIoT.js');
+// The "costomIoT" instance will be created later
 var GetBluemixVCAP = require('./own_modules/getBluemixVCAP.js');
 var getBluemixVCAP = new GetBluemixVCAP();
-var cloudant_service_name = "";
-var iot_service_name = "";
+var WebApplication = require('./own_modules/webApplication.js');
+var port = (process.env.PORT || 8000);
+var webApplication = new WebApplication(port);
 
+// Listen on port 8000 or Cloud provided Port
+// this is only to enable frequent health checking in Containers or CF
+
+webApplication.startWebApplication();
+webApplication.startSocketServer();
+
+
+/*********** BASIC HTTP SERVER  BEGIN ********************
 // only for health check
 var http = require('http');
-console.log('>>> Set server');
+console.log('>>> Set IoT Server on Port: ', port);
 var server = http.createServer(function (request, response) {
   response.writeHead(200, {"Content-Type": "text/plain"});
   response.end("iotreceiver Server is running\n");
 });
-// Listen on port 8000 or Cloud provided Port
-// this is only to enable frequent health checking in Containers or CF
-var port = (process.env.PORT || 8000);
 server.listen(port);
+/************ BASIC HTTP SERVER  END   *******************/
 
 // Configure Credentials
 // =====================
@@ -68,4 +76,5 @@ if(getBluemixVCAP.getServiceCredentialsCloundant().url){
 var appClientIoT = new ClientIoT.IotfApplication(config);
 var deviceType   = "vehicle";
 var customIoT    = new CustomIoT(deviceType, appClientIoT, cloudantUrl, cloudant);
+customIoT.setWebApplication(webApplication);
 customIoT.doIoT();

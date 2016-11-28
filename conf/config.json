@@ -1,0 +1,4 @@
+{
+	"portHttpServer": 8000,
+  "portAppServer": 80
+}
