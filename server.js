@@ -85,6 +85,8 @@ function savePayload(payload,cb){
 appClient.on("deviceEvent", function (deviceType, deviceId, eventType, format, payload) {
     console.log("Device Event from :: "+deviceType+" : "+deviceId+" of event "+eventType+" with payload : "+payload);
     var realPayload = JSON.parse(payload.toString());
+    realPayload = realPayload.d;
+    console.log(realPayload);
     limiter.submit(savePayload, realPayload,function(err,res){
     });
 });
